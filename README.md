@@ -235,10 +235,6 @@ npm test
 3. **CORS**: El backend está configurado para aceptar peticiones desde `http://localhost:3000`
 4. **Logs**: Los logs se guardan en `backend/logs/roxfarma.log`
 
-## 👥 Equipo de Desarrollo
-
-- Enzo Siapo Flores
-
 ## 📄 Licencia
 
 Universidad Tecnológica del Perú (UTP) - Proyecto Integrador de Sistemas
