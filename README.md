@@ -1,244 +1,81 @@
-# 🏥 Sistema de Gestión Farmacéutica RoxFarma
+# RoxFarma Frontend
 
-Sistema completo de gestión farmacéutica desarrollado con Spring Boot (Backend) y React + TypeScript (Frontend).
+Frontend del Sistema de Gestión Farmacéutica RoxFarma desarrollado con React + TypeScript.
 
-## 📋 Características
+## 🚀 Tecnologías
 
-- ✅ Gestión de productos e inventario
-- ✅ Control de ventas con generación de boletas PDF
-- ✅ Gestión de pedidos a proveedores
-- ✅ Administración de clientes y proveedores
-- ✅ Alertas de stock bajo y productos próximos a vencer
-- ✅ Dashboard con estadísticas en tiempo real
-- ✅ Autenticación y autorización con JWT
-- ✅ Roles de usuario (Administrador y Trabajador)
-- ✅ Auditoría de operaciones
-
-## 🛠️ Tecnologías
-
-### Backend
-- Java 17
-- Spring Boot 3.2.0
-- Spring Security + JWT
-- Spring Data JPA
-- MySQL 8
-- iText PDF
-- Maven
-
-### Frontend
 - React 18
 - TypeScript
-- React Router
+- React Router v6
 - Axios
-- CSS3
+- Material-UI
+- Context API
 
-## 📦 Requisitos Previos
-
-- Java JDK 17 o superior
-- Node.js 16 o superior
-- MySQL 8 o superior
-- Maven 3.6 o superior
-
-## 🚀 Instalación y Configuración
-
-### 1. Configurar Base de Datos
+## 📦 Instalación
 
 ```bash
-# Iniciar MySQL
-mysql -u root -p
-
-# Ejecutar el script de base de datos
-mysql -u root -p < database/schema.sql
-```
-
-### 2. Configurar Backend
-
-```bash
-# Navegar a la carpeta backend
-cd backend
-
-# Editar application.properties si es necesario
-# Cambiar la contraseña de MySQL en:
-# spring.datasource.password=tu_password
-
-# Compilar el proyecto
-mvn clean install
-
-# Ejecutar el backend
-mvn spring-boot:run
-```
-
-El backend estará disponible en: `http://localhost:8080`
-
-### 3. Configurar Frontend
-
-```bash
-# Navegar a la carpeta frontend
-cd frontend
-
 # Instalar dependencias
 npm install
 
-# Ejecutar el frontend
+# Iniciar en desarrollo
 npm start
+
+# Compilar para producción
+npm run build
 ```
 
-El frontend estará disponible en: `http://localhost:3000`
+## 🔧 Configuración
 
-## 👤 Usuarios por Defecto
-
-### Administrador
-- **Usuario:** `admin`
-- **Contraseña:** `password123`
-- **Rol:** ADMINISTRADOR
-- **Acceso:** Todos los módulos
-
-### Trabajadores
-- **Usuario:** `jperez` (Juan Pérez Torres)
-- **Contraseña:** `password123`
-- **Rol:** TRABAJADOR
-
-- **Usuario:** `mgarcia` (María García López)
-- **Contraseña:** `password123`
-- **Rol:** TRABAJADOR
-
-**Nota:** Todos los trabajadores tienen acceso a: Dashboard, Productos (lectura), Ventas, Pedidos
-
-## 📁 Estructura del Proyecto
+Crear archivo `.env` en la raíz del proyecto:
 
 ```
-roxfarma-sistema-gestion/
-├── backend/                    # Backend Spring Boot
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/com/roxfarma/
-│   │   │   │   ├── config/    # Configuración de seguridad
-│   │   │   │   ├── controller/# Controladores REST
-│   │   │   │   ├── dto/       # Data Transfer Objects
-│   │   │   │   ├── exception/ # Excepciones personalizadas
-│   │   │   │   ├── model/     # Entidades JPA
-│   │   │   │   ├── repository/# Repositorios
-│   │   │   │   ├── security/  # JWT y seguridad
-│   │   │   │   ├── service/   # Servicios de negocio
-│   │   │   │   └── util/      # Utilidades
-│   │   │   └── resources/
-│   │   │       ├── application.properties
-│   │   │       └── logback-spring.xml
-│   │   └── test/              # Pruebas unitarias
-│   └── pom.xml
-│
-├── frontend/                   # Frontend React
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── auth/          # Login
-│   │   │   ├── common/        # Componentes comunes
-│   │   │   ├── dashboard/     # Dashboard
-│   │   │   ├── productos/     # Gestión de productos
-│   │   │   ├── ventas/        # Gestión de ventas
-│   │   │   ├── pedidos/       # Gestión de pedidos
-│   │   │   ├── clientes/      # Gestión de clientes
-│   │   │   ├── proveedores/   # Gestión de proveedores
-│   │   │   ├── reportes/      # Gestión de reportes
-│   │   │   └── usuarios/      # Gestión de usuarios
-│   │   ├── context/           # Context API
-│   │   ├── services/          # Servicios API
-│   │   ├── types/             # TypeScript types
-│   │   ├── App.tsx
-│   │   └── index.tsx
-│   └── package.json
-│
-├── database/                   # Scripts SQL
-│   └── schema.sql
-│
-└── README.md
+REACT_APP_API_URL=http://localhost:8080/api
 ```
 
-## 🔑 Endpoints Principales del API
+## 👥 Usuarios de Prueba
 
-### Autenticación
-- `POST /api/auth/login` - Iniciar sesión
+- **Administrador**: admin / admin123
+- **Trabajador**: trabajador1 / trabajador123
 
-### Productos
-- `GET /api/productos` - Listar productos
-- `POST /api/productos` - Crear producto (Admin)
-- `PUT /api/productos/{id}` - Actualizar producto (Admin)
-- `DELETE /api/productos/{id}` - Eliminar producto (Admin)
-- `GET /api/productos/alertas/stock-bajo` - Productos con stock bajo
-- `GET /api/productos/alertas/proximos-vencer` - Productos próximos a vencer
+## 📁 Estructura
 
-### Ventas
-- `POST /api/ventas` - Registrar venta
-- `GET /api/ventas` - Listar ventas
-- `GET /api/ventas/{id}/boleta` - Descargar boleta PDF
+```
+src/
+├── components/       # Componentes React
+│   ├── auth/        # Login y autenticación
+│   ├── common/      # Componentes reutilizables
+│   └── dashboard/   # Dashboard principal
+├── context/         # Contextos (Auth)
+├── services/        # Servicios API
+├── types/           # Tipos TypeScript
+├── App.tsx          # Componente principal
+└── index.tsx        # Punto de entrada
+```
 
-### Pedidos
-- `POST /api/pedidos` - Crear pedido
-- `GET /api/pedidos` - Listar pedidos
-- `PUT /api/pedidos/{id}/estado` - Actualizar estado
+## ✨ Funcionalidades Implementadas
 
-### Dashboard
-- `GET /api/dashboard/alertas` - Obtener alertas
-- `GET /api/dashboard/estadisticas` - Obtener estadísticas
+- ✅ Autenticación con JWT
+- ✅ Dashboard principal
+- ✅ Rutas protegidas
+- ✅ Manejo de roles (Administrador/Trabajador)
+- ✅ Interceptores de Axios
+- ✅ Context API para estado global
 
-## 🎯 Funcionalidades por Rol
+## 🔜 Próximas Funcionalidades
 
-### Administrador
-- Todas las funcionalidades del sistema
-- Gestión de usuarios
-- Gestión de productos (CRUD completo)
-- Gestión de clientes y proveedores
-- Acceso a reportes
-
-### Trabajador
-- Visualización de productos
+- Gestión de productos
 - Registro de ventas
 - Gestión de pedidos
-- Visualización de dashboard
+- Alertas de inventario
+- Reportes y estadísticas
 
-## 📊 Características Técnicas
+## 🌐 API Backend
 
-### Backend
-- Arquitectura en capas (Controller, Service, Repository)
-- Validación de datos con Bean Validation
-- Manejo global de excepciones
-- Logging con Logback
-- Auditoría de operaciones
-- Generación de PDFs con iText
-- Seguridad con JWT
-- CORS configurado
+El frontend se comunica con el backend Spring Boot en `http://localhost:8080/api`
 
-### Frontend
-- Componentes reutilizables
-- Rutas protegidas
-- Manejo de estado con Context API
-- Interceptores HTTP para JWT
-- Validación de formularios
-- Diseño responsive
-- Alertas y notificaciones
+## 📝 Notas
 
-## 🧪 Pruebas
-
-```bash
-# Ejecutar pruebas del backend
-cd backend
-mvn test
-
-# Ejecutar pruebas del frontend
-cd frontend
-npm test
-```
-
-## 📝 Notas Importantes
-
-1. **Seguridad**: En producción, cambiar la clave JWT en `application.properties`
-2. **Base de Datos**: Asegurarse de que MySQL esté corriendo antes de iniciar el backend
-3. **CORS**: El backend está configurado para aceptar peticiones desde `http://localhost:3000`
-4. **Logs**: Los logs se guardan en `backend/logs/roxfarma.log`
-
-## 📄 Licencia
-
-Universidad Tecnológica del Perú (UTP) - Proyecto Integrador de Sistemas
-
----
-
-**Versión:** 1.5.0
+- El proxy está configurado en `package.json` para desarrollo
+- Los tokens JWT se guardan en localStorage
+- Las rutas están protegidas con PrivateRoute
+- El sistema redirige automáticamente a login si el token expira
